@@ -1,15 +1,14 @@
 package algo;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.sql.Array;
+import java.util.*;
 
 public class BinaryTree {
-    // var && attribute
+    // vars && attributes
     static public Map<Character, Node> nodes = new HashMap<>();
     private Node root ;
 
-    // contracture
+    // contractures
     public BinaryTree (Node root){this.root = root ;}
     public BinaryTree (){this.root = new Node() ;}
 
@@ -18,6 +17,8 @@ public class BinaryTree {
     //      2- fix string from trim
     //      3- analyze string to get two subtree
     //      4- link father node with sun node
+    // input : String
+    // output : root node
     public void buildTree (String input){
         // insert node in a map && fix input String from ( spaces & nodes details )
         input = fixInputString(input);
@@ -25,20 +26,33 @@ public class BinaryTree {
         String rightString = null ;
         String leftString  = null ;
         char rootName = 0;
-        for (int i=1 ;i<input.length()-1;i++){
-            if (((input.charAt(i)== '|') && (input.charAt(i - 1) == ')') && (input.charAt(i + 1) == '(')) || ((input.charAt(i)== '-') && (input.charAt(i - 1) == ')') && (input.charAt(i + 1) == '('))){
-                // get left subtree String
-                leftString = input.substring(0,i);
-                // get right subtree String
-                rightString = input.substring(i+1);
-                // get root node name
-                rootName = input.charAt(i);
-            }
+        if (input.isEmpty()){
+            root = null ;
         }
-        root = new Node(rootName,constructTree(leftString),constructTree(rightString));
+        else {
+            for (int i=1 ;i<input.length()-1;i++){
+                if (((input.charAt(i)== '|') && (input.charAt(i - 1) == ')') && (input.charAt(i + 1) == '(')) || ((input.charAt(i)== '-') && (input.charAt(i - 1) == ')') && (input.charAt(i + 1) == '('))){
+                    // get left subtree String
+                    leftString = input.substring(0,i);
+                    // get right subtree String
+                    rightString = input.substring(i+1);
+                    // get root node name
+                    rootName = input.charAt(i);
+                }
+            }
+            if (rightString.isEmpty()&&leftString.isEmpty())
+                root = new Node(rootName,null,null);
+            if (rightString.isEmpty())
+                root = new Node(rootName,null,constructTree(leftString));
+            else if (leftString.isEmpty())
+                root = new Node(rootName,constructTree(rightString),null);
+            root = new Node(rootName,constructTree(rightString),constructTree(leftString));
+        }
     }
 
     // done
+    // input  = "(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))"
+    // output = "(A|(B|C))-(D|(E-F))"
     static public String fixInputString  (String input){
         // delete spaces
         input = input.replace(" ", "");
@@ -64,18 +78,30 @@ public class BinaryTree {
                 String nodeHigh = value.substring(1,comma-1);
                 // width value
                 String nodeWidth = value.substring(comma,value.length()-1);
-                // create node and add it to nodes map
+                // create a node and add it to nodes' map
                 BinaryTree.nodes.put(name,new Node(name,Integer.parseInt(nodeWidth),Integer.parseInt(nodeHigh)));
             }
         }
         // delete node's details from string
-        for (int i=0;i<input.length();i++) {
-            if (Character.isLetter(input.charAt(i))) {
-                input = input.substring(0,i+1)+input.substring(i+8);
-            }
+        for (int z : nodes.keySet())
+            input = input.substring(0,input.indexOf('['))+input.substring(input.indexOf(']')+1);
+
+        // validate if the tree one side or two
+        // | () => () | ()
+        if (input.charAt(0)!='(')
+            input = "()" + input ;
+        // () | => () | ()
+        else if (input.charAt(input.length()-1)!=')')
+            input = input + "()";
+        // () or " " => null
+        else if (input.equals("()")){
+            return null ;
         }
         return input ;
     }
+
+    // input  = "(A|(B|C))-(D|(E-F))"
+    // output = "(A[20,10]|(B[20,10]|C[30,10]))-(D[30,50]|(E[40,30]-F[40,20]))"
     static public String fixOutputString (String input){
         for (int i=0 ;i<input.length();i++){
             if (Character.isLetter(input.charAt(i))&&(input.charAt(i)!='|'||input.charAt(i)!='-')){
@@ -113,22 +139,16 @@ public class BinaryTree {
         return stack.pop();
     }
 
-    public void printInorder(Node node) {
+    public String printInorder(Node node) {
+        String input ="";
         if (node != null) {
-            printInorder(node.getLeft());
-            System.out.print(node.getName() + " ");
-            printInorder(node.getRight());
+            input += " ( "+printInorder(node.getLeft());
+            input += " "+ node.getName() + " ";
+            input +=printInorder(node.getRight())+" ) ";
         }
+        input = input.replace("  "," ");
+        return input ;
     }
-
-    //  String writeTree(Node node, String input ){
-    //      if (node !=null) {
-    //          input += writeTree(node.left,input);
-    //          input += node.name ;
-    //          input += writeTree(node.right,input);
-    //      }
-    //      return input;
-    //  }
 
     public Node getRoot() {
         return root;

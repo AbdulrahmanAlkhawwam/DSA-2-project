@@ -1,4 +1,6 @@
-package algo;
+package screens;
+
+import algo.Node;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -37,18 +39,18 @@ public class BinaryTreeDrawer {
     private static void drawTree(Node root, Graphics2D g, int x, int y, int xOffset) {
         if (root != null) {
             g.drawOval(x - NODE_RADIUS, y - NODE_RADIUS, 2 * NODE_RADIUS, 2 * NODE_RADIUS);
-            g.drawString(String.valueOf(root.name), x - 5, y + 5);
-            if (root.left != null) {
+            g.drawString(String.valueOf(root.getName()), x - 5, y + 5);
+            if (root.getLeft() != null) {
                 int newX = x - xOffset / 2;
                 int newY = y + VERTICAL_GAP;
                 g.drawLine(x, y, newX, newY - NODE_RADIUS);
-                drawTree(root.left, g, newX, newY, xOffset / 2);
+                drawTree(root.getLeft(), g, newX, newY, xOffset / 2);
             }
-            if (root.right != null) {
+            if (root.getRight() != null) {
                 int newX = x + xOffset / 2;
                 int newY = y + VERTICAL_GAP;
                 g.drawLine(x, y, newX, newY - NODE_RADIUS);
-                drawTree(root.right, g, newX, newY, xOffset / 2);
+                drawTree(root.getRight(), g, newX, newY, xOffset / 2);
             }
         }
     }
@@ -57,8 +59,8 @@ public class BinaryTreeDrawer {
         if (root == null)
             return 0;
         else {
-            int leftHeight = calculateHeight(root.left);
-            int rightHeight = calculateHeight(root.right);
+            int leftHeight = calculateHeight(root.getLeft());
+            int rightHeight = calculateHeight(root.getRight());
 
             return Math.max(leftHeight, rightHeight) + 1;
         }
