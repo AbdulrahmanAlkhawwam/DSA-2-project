@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Stack;
+
 public class BinaryTreeExample {
     BinaryTreeNode root;
     BinaryTreeExample()
@@ -44,6 +45,7 @@ public class BinaryTreeExample {
                 t = new BinaryTreeNode(c);
                 stack.push(t);
             }
+            System.out.println(stack.size());
         }
 
         return stack.pop();

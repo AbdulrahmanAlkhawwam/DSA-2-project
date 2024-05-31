@@ -1,3 +1,5 @@
+package algo;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,25 +14,7 @@ public class BinaryTreeDrawer {
     private static final int INITIAL_X = 500;
     private static final int INITIAL_Y = 50;
 
-
-    /*BinaryTreeNode BuiltTree(){
-        String postfix = "(A|(B|C))";
-        BinaryTreeNode root = constructTree(postfix);
-
-        String postfix2 = "(D|(E–F))";
-        BinaryTreeNode root2 = constructTree(postfix2);
-
-
-
-        BinaryTreeNode allroot=new BinaryTreeNode('-');
-        allroot.left=root;
-        allroot.right=root2;
-
-        return allroot;
-
-    }*/
-
-    public static void drawBinaryTree(BinaryTreeNode root, String filename) {
+    public static void drawBinaryTree(Node root, String filename) {
         int treeHeight = calculateHeight(root);
         int treeWidth = (int) Math.pow(2, treeHeight) * (NODE_RADIUS + HORIZONTAL_GAP);
 
@@ -50,10 +34,10 @@ public class BinaryTreeDrawer {
         }
     }
 
-    private static void drawTree(BinaryTreeNode root, Graphics2D g, int x, int y, int xOffset) {
+    private static void drawTree(Node root, Graphics2D g, int x, int y, int xOffset) {
         if (root != null) {
             g.drawOval(x - NODE_RADIUS, y - NODE_RADIUS, 2 * NODE_RADIUS, 2 * NODE_RADIUS);
-            g.drawString(String.valueOf(root.data), x - 5, y + 5);
+            g.drawString(String.valueOf(root.name), x - 5, y + 5);
             if (root.left != null) {
                 int newX = x - xOffset / 2;
                 int newY = y + VERTICAL_GAP;
@@ -69,19 +53,7 @@ public class BinaryTreeDrawer {
         }
     }
 
-
-//
-//    void printInorder(BinaryTreeNode node) {
-//        if (node == null)
-//            return;
-//
-//        printInorder(node.left);
-//        System.out.print(node.data + " ");
-//        printInorder(node.right);
-//    }
-
-
-    private static int calculateHeight(BinaryTreeNode root) {
+    private static int calculateHeight(Node root) {
         if (root == null)
             return 0;
         else {
