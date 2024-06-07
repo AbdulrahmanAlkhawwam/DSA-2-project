@@ -1,4 +1,4 @@
-package algo;
+package First_Question.algo;
 
 public class Node {
     // vars and attributes

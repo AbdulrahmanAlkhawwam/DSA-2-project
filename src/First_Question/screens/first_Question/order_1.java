@@ -1,4 +1,4 @@
-package screens.first_Question;
+package First_Question.screens.first_Question;
 
 
 import javax.swing.*;

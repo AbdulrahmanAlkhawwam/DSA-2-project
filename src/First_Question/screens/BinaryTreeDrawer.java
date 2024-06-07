@@ -1,6 +1,6 @@
-package screens;
+package First_Question.screens;
 
-import algo.Node;
+import First_Question.algo.Node;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
