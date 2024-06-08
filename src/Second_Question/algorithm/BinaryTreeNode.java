@@ -1,4 +1,4 @@
-package Second_Question.Algorithm;
+package Second_Question.algorithm;
 
 
 public class BinaryTreeNode {

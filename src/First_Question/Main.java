@@ -1,9 +1,6 @@
 package First_Question;
 
-import First_Question.algo.BinaryTree;
-import First_Question.algo.Node;
-import First_Question.files.readFile;
-import First_Question.files.writeFile;
+import First_Question.algorithm.*;
 
 import java.io.IOException;
 
@@ -11,12 +8,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         try {
             // convert a tree-bt1 (string to node)
-            BinaryTree bt1 = new BinaryTree("() - ()");
-            //BinaryTree bt1 = new BinaryTree("(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))");
-            //System.out.println(bt1.getTree());
-            //System.out.println(bt1.getRoot());
+            // String input = "(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))";
+            // BinaryTree bt1 = new BinaryTree(input);
+            // Node output = bt1.getRoot();
+            Form3Exp Form3=new Form3Exp();
+            Form3.creatTree();
+            Form3Imp Form3I=new Form3Imp();
 
-          //  // node build by user for test convert bt2
+
+            //  // node build by user for test convert bt2
           //  Node root = new Node('-');
           //  root.setLeft(new Node('|'));
           //  root.getLeft().setLeft(new Node('A',20,10));

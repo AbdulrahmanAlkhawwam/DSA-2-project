@@ -1,4 +1,4 @@
-package Second_Question.Algorithm;
+package Second_Question.algorithm;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +44,6 @@ public class GeneralTree {
     }
 
     public String TreeToString(Node root) {
-
         StringBuilder sb = new StringBuilder();
         TreeToStringConverter(root, sb);
         return sb.toString();

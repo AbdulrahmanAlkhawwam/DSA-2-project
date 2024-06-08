@@ -1,4 +1,4 @@
-package First_Question.algo;
+package First_Question.algorithm;
 import java.util.*;
 
 public class BinaryTree {
@@ -46,11 +46,13 @@ public class BinaryTree {
             if (shrinkString[0].isEmpty()&&shrinkString[2].isEmpty()) {
                 output = new Node(shrinkString[1].charAt(0),null,null);
             }
-        //    if (rightString.isEmpty())
-        //        output = new Node(rootName,null,constructTree(leftString));
-        //    else if (leftString.isEmpty())
-        //        output = new Node(rootName,constructTree(rightString),null);
-        //    output = new Node(rootName,constructTree(rightString),constructTree(leftString));
+            else if (shrinkString[2].isEmpty())
+                output = new Node(shrinkString[1].charAt(0),null,constructTree(shrinkString[0]));
+            else if (shrinkString[0].isEmpty())
+                output = new Node(shrinkString[1].charAt(0),constructTree(shrinkString[2]),null);
+            else {
+                output = new Node(shrinkString[1].charAt(0),constructTree(shrinkString[2]),constructTree(shrinkString[0]));
+            }
         }
         return output;
     }

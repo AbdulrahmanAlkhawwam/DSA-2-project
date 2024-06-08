@@ -1,5 +1,5 @@
-package Second_Question.GUITrees;
-import Second_Question.Algorithm.*;
+package Second_Question.screens;
+import Second_Question.algorithm.*;
 
 import javax.swing.*;
 import java.awt.*;

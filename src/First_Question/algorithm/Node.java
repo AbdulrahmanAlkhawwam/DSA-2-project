@@ -1,4 +1,4 @@
-package First_Question.algo;
+package First_Question.algorithm;
 
 public class Node {
     // vars and attributes
@@ -94,6 +94,40 @@ public class Node {
                 ", width=" + width +
                 ", high=" + high +
                 '}';
+    }
+
+    void addChild(Node child, boolean isLeft) {
+        if (isLeft) {
+            this.left = child;
+        } else {
+            this.right = child;
+        }
+    }
+
+    public Node buildTree(Node[] characters) {
+        int index = 0;
+        if (index >= characters.length) {
+
+            return null;
+        }
+        Node current = characters[index++];
+        Node node = new Node(current.name,current.getWidth(),current.getHigh());
+        // If the current node is '-' or '|', it is an internal node
+        if (current.getName()=='-' || current.getName()=='|') {
+            node.left = buildTree(characters);  // build left subtree
+            node.right = buildTree(characters); // build right subtree
+        }
+        return node;
+    }
+
+    // Helper method to print the tree in pre-order to verify correctness
+    public void printTree(Node node) {
+        if (node != null) {
+
+            System.out.print(node.getName() + " \n");
+            printTree(node.left);
+            printTree(node.right);
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 package Second_Question;
 
-import Second_Question.Algorithm.*;
-import Second_Question.GUITrees.*;
+import Second_Question.algorithm.*;
+import Second_Question.screens.*;
 
 import javax.swing.*;
 
