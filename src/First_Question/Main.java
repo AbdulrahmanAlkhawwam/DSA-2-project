@@ -7,27 +7,30 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         try {
-            // convert a tree-bt1 (string to node)
-            // String input = "(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))";
-            // BinaryTree bt1 = new BinaryTree(input);
-            // Node output = bt1.getRoot();
-            Form3Exp Form3=new Form3Exp();
-            Form3.creatTree();
-            Form3Imp Form3I=new Form3Imp();
+            //convert a tree-bt1 (string to node)
+            String input = "(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))";
+            BinaryTree bt1 = new BinaryTree(input);
+            System.out.println(bt1.getRoot());
+            System.out.println(bt1.getTree());
+            System.out.println(bt1.PrintTree(bt1.getRoot()));
+            Node output = bt1.getRoot();
+            //Form3Exp Form3=new Form3Exp();
+            //Form3.creatTree();
+            //Form3Imp Form3I=new Form3Imp();
 
 
             //  // node build by user for test convert bt2
-          //  Node root = new Node('-');
-          //  root.setLeft(new Node('|'));
-          //  root.getLeft().setLeft(new Node('A',20,10));
-          //  root.getLeft().setRight(new Node('|'));
-          //  root.getLeft().getRight().setLeft(new Node('B',20,10));
-          //  root.getLeft().getRight().setRight(new Node('C',30,10));
-          //  root.setRight(new Node('|'));
-          //  root.getRight().setLeft(new Node('D',30,50));
-          //  root.getRight().setRight(new Node('-'));
-          //  root.getRight().getRight().setLeft(new Node('E',40,30));
-          //  root.getRight().getRight().setRight(new Node('F',40,20));
+          //  GeneralTreeNode root = new GeneralTreeNode('-');
+          //  root.setLeft(new GeneralTreeNode('|'));
+          //  root.getLeft().setLeft(new GeneralTreeNode('A',20,10));
+          //  root.getLeft().setRight(new GeneralTreeNode('|'));
+          //  root.getLeft().getRight().setLeft(new GeneralTreeNode('B',20,10));
+          //  root.getLeft().getRight().setRight(new GeneralTreeNode('C',30,10));
+          //  root.setRight(new GeneralTreeNode('|'));
+          //  root.getRight().setLeft(new GeneralTreeNode('D',30,50));
+          //  root.getRight().setRight(new GeneralTreeNode('-'));
+          //  root.getRight().getRight().setLeft(new GeneralTreeNode('E',40,30));
+          //  root.getRight().getRight().setRight(new GeneralTreeNode('F',40,20));
 //
           //  // convert a tree-bt2 (node to string)
           //  BinaryTree bt2 = new BinaryTree(root);

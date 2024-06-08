@@ -87,7 +87,7 @@ public class Node {
     // print node only for debugging
     @Override
     public String toString() {
-        return "Node{" +
+        return "GeneralTreeNode{" +
                 "name=" + name +
                 ", right=" + right +
                 ", left=" + left +

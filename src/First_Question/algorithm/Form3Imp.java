@@ -1,12 +1,15 @@
 package First_Question.algorithm;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
 public class Form3Imp {
-    public static Node Read (String filename) throws IOException {
+    public static void ReadF(String filename){
+        Read("Form3/inoutputRec/DrwoRectangleForm3");
+
+    }
+    public static Node Read (String filename) {
         String[] drawing;
 
         try (BufferedReader reader = new BufferedReader(new FileReader( filename))) {
@@ -14,6 +17,8 @@ public class Form3Imp {
             String line;
             while ((line = reader.readLine()) != null) {
                 i++;
+
+
             }
             reader.close();
             BufferedReader reader1 = new BufferedReader(new FileReader(filename));
@@ -29,8 +34,9 @@ public class Form3Imp {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-       // for (int k=0;k<drawing.length;k++)
-       // System.out.println(drawing[k]);
+        //System.out.println(drawing);
+//        for (int k=0;k<drawing.length;k++)
+//        System.out.println(drawing[k]);
 
 
         int ind = 0;
@@ -46,13 +52,13 @@ public class Form3Imp {
 
         for (int i = 0; i < r.length; i++) {
 
-            if (r[i].root) {
-                ind = i;
-            }
+    //        if (r[i].root) {
+   //             ind = i;
+    //        }
         }
         for (int i = 1; i < ind; i++) {
 
-            if (r[i].getName()=='|' || r[i].getName()== '-') {
+            if (r[i].getName()=='|' || r[i].getName()=='-') {
                 temp = r[i];
                 r[i] = r[i - 1];
                 r[i - 1] = temp;
@@ -91,8 +97,9 @@ public class Form3Imp {
         root = root1.buildTree(r);
 
         // Output the tree in pre-order to verify correctness
-        root1.printTree(root);
-        return root;
+ //       root.data.root=true;
+ //       root1.printTree(root);
+       return root;
     }
 
 
@@ -132,17 +139,17 @@ public class Form3Imp {
                     }
                 } else if (isOr(drawing[row].charAt(col)) && found) {
                     if (isOr(drawing[drawing.length - 2].charAt(col)) && row == 1)
-                        rectangles.add(new Node (drawing[row].charAt(col), 0, 0/*, true*/));
+                        rectangles.add(new Node(drawing[row].charAt(col), 0, 0/*, true)*/));
                     else
-                        rectangles.add(new Node (drawing[row].charAt(col), 0, 0/*, false*/));
+                        rectangles.add(new Node(drawing[row].charAt(col), 0, 0/*, false)*/));
                     found = false;
                 } else if (isDash(drawing[row].charAt(col)) && found2) {
 
                     if (drawing[row].startsWith("-") && drawing[row].endsWith("-")) {
 
-                        rectangles.add(new Node (drawing[row].charAt(col), 0, 0/*, true*/));
+                        rectangles.add(new Node(drawing[row].charAt(col), 0, 0/*, true)*/));
                     } else
-                        rectangles.add(new Node (drawing[row].charAt(col), 0, 0/*, false*/));
+                        rectangles.add(new Node(drawing[row].charAt(col), 0, 0/*, false)*/));
                     found2 = false;
                 }
             }

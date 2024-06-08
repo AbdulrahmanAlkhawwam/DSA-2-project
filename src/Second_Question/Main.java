@@ -17,13 +17,13 @@ public class Main {
             GT.Import(treeString);
             System.out.println("Level order traversal ");
             GT.printGeneralTree(GT.root ,0);
-            Node Gr=GT.Export(GT.ConvertFileToList());
+            GeneralTreeNode Gr=GT.Export(GT.ConvertFileToList());
 
             BinaryTreeNode binaryTreeRoot = BT.ConvertGeneralToBinary(GT.root);
             BT.printBinaryTree(binaryTreeRoot, "");
 
             SwingUtilities.invokeLater(() -> {
-                //Algorithm.Node root = GT.root;
+                //Algorithm.GeneralTreeNode root = GT.root;
                 FrameGUI frame = new FrameGUI(Gr);
                 frame.setVisible(true);
             });

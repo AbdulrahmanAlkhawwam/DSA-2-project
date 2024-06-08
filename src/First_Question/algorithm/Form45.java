@@ -1,5 +1,6 @@
 package First_Question.algorithm;
 
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +12,7 @@ public class Form45 {
     static ArrayList <Node> pa=new ArrayList<>();
 
     public static void CreatTree() throws IOException {
+
         Node n = new Node('|', 0, 0);
         n.setLeft(new Node('-', 0, 0));
         n.getLeft().setLeft(new Node('|', 0, 0));
@@ -20,31 +22,9 @@ public class Form45 {
         n.getLeft().getLeft().getRight().setLeft(new Node('D', 20, 10));
         n.getLeft().getLeft().getRight().setRight(new Node('E', 10, 20));
         n.setRight(new Node('F', 40, 70));
-        //n.right.left = new TreeNode("D", 30, 50);
-        //n.right.right = new TreeNode("-", 0, 0);
-        //n.right.right.left = new TreeNode("E", 40, 30);
-        //n.right.right.right = new TreeNode("F", 40, 20);
-        /*TreeNode n = new TreeNode("-", 0, 0);
-        n.left = new TreeNode("|", 0, 0);
-        n.left.left = new TreeNode("A", 30, 10);
-        n.left.right = new TreeNode("|", 0, 0);
-        n.left.right.left = new TreeNode("B", 10, 10);
-        n.left.right.right = new TreeNode("C", 30, 10);
-        n.right = new TreeNode("|", 0, 0);
-        n.right.left = new TreeNode("D", 30, 50);
-        n.right.right = new TreeNode("-", 0, 0);
-        n.right.right.left = new TreeNode("E", 40, 30);
-        n.right.right.right = new TreeNode("F", 40, 20);*/
         check(n);
         answer(pa);
-        drawTree(n,"src/DrawRecForm4");
-
-        // System.out.println(pa.toString());
-//    for (int i=0;i<pa.size();i++){
-//        System.out.println(pa.get(i));
-//    }
-
-
+        drawTree(n,"Form4and5/DrawRecForm4");
     }
     public static void check(Node root){
         if(root!=null){
@@ -52,11 +32,9 @@ public class Form45 {
                 pa.add(root);
 
             }
-
             check(root.getLeft());
             check(root.getRight());
         }
-
     }
 
 
@@ -151,60 +129,7 @@ public class Form45 {
             throw new RuntimeException(e);
         }
     }
-    //    public static boolean isAlpha ( char c){
-//        return Character.isLetter(c);
-//    }
-//    public static void CreatRectanglePaper(){
-//        ArrayList<Rectangle> papers = new ArrayList<>();
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//        papers.add(new Rectangle("Paper1", 1, 2));
-//        papers.add(new Rectangle("Paper2", 1, 4));
-//        papers.add(new Rectangle("Paper3", 5, 6));
-//     ArrayList<Rectangle> papers1=new ArrayList<>();
-//        papers1.add(new Rectangle("Paper1", 20, 10));
-//        papers1.add(new Rectangle("Paper2", 20, 10));
-//        papers1.add(new Rectangle("Paper3", 30, 10));
-//        papers1.add(new Rectangle("Paper4", 30, 50));
-//        papers1.add(new Rectangle("Paper5", 40, 30));
-//        papers1.add(new Rectangle("Paper6", 40, 20));
-//
-//        ArrayList<Rectangle> papers3 = new ArrayList<>();
-//        papers3.add(new Rectangle("Paper1", 13, 5));
-//        papers3.add(new Rectangle("Paper2", 3, 10));
-//        papers3.add(new Rectangle("Paper3", 10, 10));
-//
-//        ArrayList<Rectangle> papers2 = new ArrayList<>();
-//        papers2.add(new Rectangle("Paper1", 20, 10));
-//        papers2.add(new Rectangle("Paper2", 23, 40));
-//        papers2.add(new Rectangle("Paper3", 20, 50));
-//        papers2.add(new Rectangle("Paper4", 33, 54));
-//        papers2.add(new Rectangle("Paper5", 3, 36));
-//        papers2.add(new Rectangle("Paper6", 4, 2));
-//        //System.out.println(canFormRectangle(papers2));  // Output: false
-//        //answer(papers2);
-//
-//
-//    }
+
     public static void answer(ArrayList<Node> papers1){
         MergeRectangle rectangularPaper = new MergeRectangle();
         rectangularPaper.canFormRectangleHight(papers1);
@@ -229,8 +154,5 @@ public class Form45 {
         }else{
             System.out.println("all Rectangle can be form is: "+rectangularPaper.count);
         }
-
-
-
     }
 }

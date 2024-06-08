@@ -5,11 +5,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TreeGUI extends JPanel {
-    Node root;
+    GeneralTreeNode root;
     private final Color branchColor = Color.BLUE;
     private final Color nodeColor = Color.BLUE; // Adjusted node color
 
-    TreeGUI(Node root) {
+    TreeGUI(GeneralTreeNode root) {
         this.root = root;
     }
 
@@ -21,18 +21,18 @@ public class TreeGUI extends JPanel {
         }
     }
 
-    private void drawTree(Graphics g, Node node, int x, int y, int xOffset, int yOffset) {
+    private void drawTree(Graphics g, GeneralTreeNode node, int x, int y, int xOffset, int yOffset) {
         g.setColor(nodeColor);
         g.fillOval(x - 15, y - 15, 30, 30); // Draw circle representing node
         g.setColor(Color.BLACK);
-        g.drawString(String.valueOf(node.key), x - 5, y + 5); // Draw node key
+        g.drawString(String.valueOf(node.getName()), x - 5, y + 5); // Draw node key
         int childY = y + yOffset;
-        int numChildren = node.children.size();
+        int numChildren = node.getChildren().size();
         for (int i = 0; i < numChildren; i++) {
             int childX = x + (i * xOffset); // Adjusted x coordinate
             g.setColor(branchColor);
             g.drawLine(x, y, childX, childY);
-            drawTree(g, node.children.get(i), childX, childY, xOffset / numChildren, yOffset);
+            drawTree(g, node.getChildren().get(i), childX, childY, xOffset / numChildren, yOffset);
         }
     }
 

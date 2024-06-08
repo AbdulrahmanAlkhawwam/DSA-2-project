@@ -3,56 +3,60 @@ package Second_Question.algorithm;
 import java.util.Collections;
 
 public class BinaryTree {
-    public BinaryTreeNode ConvertGeneralToBinary(Node root)
+
+    // General tree => Binary tree
+    public BinaryTreeNode ConvertGeneralToBinary(GeneralTreeNode root)
     {
         if (root == null)
             return null;
 
-        BinaryTreeNode binaryRoot = new BinaryTreeNode(root.key);
+        BinaryTreeNode binaryTreeRoot = new BinaryTreeNode(root.getName());
 
-        if (root.children.size() > 0)
-            binaryRoot.right = ConvertGeneralToBinary(root.children.get(root.children.size() - 1));
+        if (root.getChildren().size() > 0)
+            binaryTreeRoot.setRight(ConvertGeneralToBinary(root.getChildren().get(root.getChildren().size() - 1)));
 
-        BinaryTreeNode current = binaryRoot.right;
+        BinaryTreeNode current = binaryTreeRoot.getRight();
 
-        for (int i = root.children.size() - 2; i >= 0; i--) {
+        for (int i = root.getChildren().size() - 2; i >= 0; i--) {
 
-            Node child = root.children.get(i);
-            current.left = ConvertGeneralToBinary(child);
-            current = current.left;
+            GeneralTreeNode child = root.getChildren().get(i);
+            current.setLeft(ConvertGeneralToBinary(child));
+            current = current.getLeft();
         }
 
-        return binaryRoot;
+        return binaryTreeRoot;
     }
 
+    // print a binary tree on console
     public  void printBinaryTree(BinaryTreeNode root, String prefix)
     {
         if (root == null) {
             return;
         }
 
-        System.out.println(prefix + root.key);
+        System.out.println(prefix + root.getName());
 
-        printBinaryTree(root.right, prefix + "  ");
+        printBinaryTree(root.getRight(), prefix + "  ");
 
-        printBinaryTree(root.left, prefix + "  ");
+        printBinaryTree(root.getLeft(), prefix + "  ");
     }
 
-    public Node ConvertBinaryToGeneral(BinaryTreeNode root)
+    // Binary tree => General tree
+    public GeneralTreeNode ConvertBinaryToGeneral(BinaryTreeNode root)
     {
         if (root == null)
             return null;
 
-        Node generalRoot = new Node(root.key);
+        GeneralTreeNode generalRoot = new GeneralTreeNode(root.getName());
 
-        BinaryTreeNode current = root.right;
+        BinaryTreeNode current = root.getRight();
 
         while (current != null) {
-            generalRoot.children.add(ConvertBinaryToGeneral(current));
-            current = current.left;
+            generalRoot.getChildren().add(ConvertBinaryToGeneral(current));
+            current = current.getLeft();
         }
 
-        Collections.reverse(generalRoot.children);
+        Collections.reverse(generalRoot.getChildren());
 
         return generalRoot;
     }

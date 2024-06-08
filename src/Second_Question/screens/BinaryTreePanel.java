@@ -24,19 +24,19 @@ public class BinaryTreePanel extends JPanel {
         g.setColor(nodeColor);
         g.fillOval(x - 15, y - 15, 30, 30); // Draw circle representing node
         g.setColor(Color.BLACK);
-        g.drawString(String.valueOf(node.key), x - 5, y + 5); // Draw node key
+        g.drawString(String.valueOf(node.getName()), x - 5, y + 5); // Draw node key
         int childY = y + yOffset;
-        if (node.left != null) {
+        if (node.getLeft() != null) {
             int childX = x - xOffset;
             g.setColor(branchColor);
             g.drawLine(x, y, childX, childY);
-            drawBinaryTree(g, node.left, childX, childY, xOffset / 2, yOffset);
+            drawBinaryTree(g, node.getLeft(), childX, childY, xOffset / 2, yOffset);
         }
-        if (node.right != null) {
+        if (node.getRight() != null) {
             int childX = x + xOffset;
             g.setColor(branchColor);
             g.drawLine(x, y, childX, childY);
-            drawBinaryTree(g, node.right, childX, childY, xOffset / 2, yOffset);
+            drawBinaryTree(g, node.getRight(), childX, childY, xOffset / 2, yOffset);
         }
     }
 }

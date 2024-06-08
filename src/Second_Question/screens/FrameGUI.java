@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 
 public class FrameGUI extends JFrame {
-     Node root;
+     GeneralTreeNode root;
      GeneralTree GT=new GeneralTree();
      BinaryTree bT=new BinaryTree();
     private JButton convertButton;
@@ -16,7 +16,7 @@ public class FrameGUI extends JFrame {
     private TreeGUI treePanel;
     private BinaryTreeNode binaryRoot;
     private BinaryTreePanel binaryTreePanel;
-    public FrameGUI(Node root){
+    public FrameGUI(GeneralTreeNode root){
         this.root = root;
         setTitle("General Tree and Binary Tree Visualization");
         setSize(800, 600);
@@ -52,7 +52,7 @@ public class FrameGUI extends JFrame {
         convertBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Node rootl = bT.ConvertBinaryToGeneral(binaryRoot);
+                GeneralTreeNode rootl = bT.ConvertBinaryToGeneral(binaryRoot);
                 remove(binaryTreePanel);
                 treePanel = new TreeGUI(rootl);
                 add(treePanel, BorderLayout.CENTER);

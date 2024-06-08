@@ -16,7 +16,7 @@ public class Form3Exp {
         n.getLeft().getLeft().getRight().setLeft(new Node('D', 20, 10));
         n.getLeft().getLeft().getRight().setRight(new Node('E', 10, 20));
         n.setRight(new Node('F', 40, 70));
-        drawTree(n, "src/DrwoRectangleForm3");
+        drawTree(n, "Form3/inoutputRec/DrwoRectangleForm3");
 
 
     }
@@ -95,9 +95,7 @@ public class Form3Exp {
                     canvas[i][j]='|';
                 if (( i ==canvas.length-1))
                     canvas[i][j] = '-';
-
             }
-
             canvas[y +1][x + 1] = label;
         }
     }

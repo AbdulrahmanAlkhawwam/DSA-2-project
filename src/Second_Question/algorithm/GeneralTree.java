@@ -8,21 +8,21 @@ import java.util.Map;
 public class GeneralTree {
     static String filePath = "src/Second_Question/Files/GeneralTree";
     static String filePathEx="src/Second_Question/Files/GeneEX";
-    public Node root;
+    public GeneralTreeNode root;
 
-    public void printGeneralTree(Node root , int level) {
+    public void printGeneralTree(GeneralTreeNode root , int level) {
 
         String indent = "   ";
 
-        System.out.print(indent.repeat(level) + root.key + "\n");
+        System.out.print(indent.repeat(level) + root.getName() + "\n");
 
-        for (Node child : root.children)
+        for (GeneralTreeNode child : root.getChildren())
             printGeneralTree(child ,level + 1);
     }
 
-    public Node newNode(char key)
+    public GeneralTreeNode newNode(char key)
     {
-        Node temp = new Node(key);
+        GeneralTreeNode temp = new GeneralTreeNode(key);
         return temp;
     }
 
@@ -31,43 +31,43 @@ public class GeneralTree {
     public void CreateTree ()
     {
         root = newNode('A');
-        (root.children).add(newNode('B'));
-        (root.children).add(newNode('C'));
-        (root.children).add(newNode('D'));
-        (root.children.get(0).children).add(newNode('E'));
-        (root.children.get(0).children).add(newNode('F'));
-        (root.children.get(1).children).add(newNode('G'));
-        (root.children.get(2).children).add(newNode('H'));
-        (root.children.get(2).children).add(newNode('I'));
-        (root.children.get(2).children).add(newNode('J'));
-        (root.children.get(2).children.get(2).children).add(newNode('K'));
+        (root.getChildren()).add(newNode('B'));
+        (root.getChildren()).add(newNode('C'));
+        (root.getChildren()).add(newNode('D'));
+        (root.getChildren().get(0).getChildren()).add(newNode('E'));
+        (root.getChildren().get(0).getChildren()).add(newNode('F'));
+        (root.getChildren().get(1).getChildren()).add(newNode('G'));
+        (root.getChildren().get(2).getChildren()).add(newNode('H'));
+        (root.getChildren().get(2).getChildren()).add(newNode('I'));
+        (root.getChildren().get(2).getChildren()).add(newNode('J'));
+        (root.getChildren().get(2).getChildren().get(2).getChildren()).add(newNode('K'));
     }
 
-    public String TreeToString(Node root) {
+    public String TreeToString(GeneralTreeNode root) {
         StringBuilder sb = new StringBuilder();
         TreeToStringConverter(root, sb);
         return sb.toString();
     }
 
-    public void TreeToStringConverter(Node node, StringBuilder sb) {
+    public void TreeToStringConverter(GeneralTreeNode node, StringBuilder sb) {
 
-        if (node!= null && node.children.isEmpty() == false) {
+        if (node!= null && node.getChildren().isEmpty() == false) {
 
-            sb.append(node.key);
+            sb.append(node.getName());
             sb.append("->");
 
             boolean isFirstChild = true;
 
-            for (Node child : node.children) {
+            for (GeneralTreeNode child : node.getChildren()) {
                 if (!isFirstChild) {
                     sb.append(",");
                 }
-                sb.append(child.key);
+                sb.append(child.getName());
                 isFirstChild = false;
             }
             sb.append("\n");
 
-            for (Node child : node.children) {
+            for (GeneralTreeNode child : node.getChildren()) {
                 TreeToStringConverter(child, sb);
             }
         }
@@ -111,11 +111,11 @@ public class GeneralTree {
         }
     }
 
-    public Node Export (List <String> input)
+    public GeneralTreeNode Export (List <String> input)
     {
 
-        Map<String, Node> nodes = new HashMap<>();
-       // Node GTroot=newNode(input.get(0).charAt(0));
+        Map<String, GeneralTreeNode> nodes = new HashMap<>();
+       // GeneralTreeNode GTroot=newNode(input.get(0).charAt(0));
 
         for (String line : input) {
 
@@ -133,7 +133,7 @@ public class GeneralTree {
                 if (!nodes.containsKey(childName)) {
                     nodes.put(childName, newNode(childName.charAt(0)));
                 }
-                nodes.get(parentName).children.add(nodes.get(childName));
+                nodes.get(parentName).getChildren().add(nodes.get(childName));
             }
         }
 

@@ -2,40 +2,24 @@ package First_Question.algorithm;
 import java.util.*;
 
 public class BinaryTree {
-    // vars && attributes
-    // nodes of a tree
-    public Map<Character, Node> nodes = new HashMap<>();
-    // string which description the tree
+     public Map<Character, Node> nodes = new HashMap<>();
     private String tree = null ;
-    // node which is the root of the tree
     private Node root ;
 
-    // contractures
-    // when get root to take string
     public BinaryTree (Node root){
         this.root = root ;
         String s = this.PrintTree(this.root);
         setTreeString(s);
         // here we make treeString is not null value
     }
-    // when get string to take root
     public BinaryTree (String tree){
         this.tree = tree;
         Node n = buildTree(this.tree);
         setRoot(n);
         // here we make node is not null value
     }
-    // default constructor
     public BinaryTree (){this.root = new Node() ;}
 
-
-    // BuildTree => from String to BinaryTree ...
-    //      1- adding nodes in a map
-    //      2- fix string from trim
-    //      3- analyze string to get two subtree
-    //      4- link father node with sun node
-    // input : String
-    // output : root node
     public Node buildTree (String input){
         Node output = null ;
         // insert node in a map && fix input String from ( spaces & nodes details )
@@ -57,9 +41,7 @@ public class BinaryTree {
         return output;
     }
 
-    // input  = "(A|(B|C))-(D|(E-F))"
-    // output = "(A[20,10]|(B[20,10]|C[30,10]))-(D[30,50]|(E[40,30]-F[40,20]))"
-     public String fixOutputString (String input){
+    public String fixOutputString (String input){
         for (int i=0 ;i<input.length();i++){
             if (Character.isLetter(input.charAt(i))&&(input.charAt(i)!='|'||input.charAt(i)!='-')){
                 input = input.substring(0,i)+(this.nodes.get(input.charAt(i))).printNode()+input.substring(i+1);
@@ -98,25 +80,23 @@ public class BinaryTree {
 
     public String PrintTree (Node node){
         String input =printInorder(node);
-        System.out.println(input);
         for (int i=0 ;i<input.length();i++){
             if (Character.isLetter(input.charAt(i))){
                 String s = nodes.get(input.charAt(i)).printNode();
-                input  = input.substring(0,i-1)+ s + input.substring(i+s.length());
+                input  = input.substring(0,i-1)+ s + input.substring(i+2);
                 i+=s.length();
             }
         }
-        System.out.println(input);
-        return input;
+        return input.substring(1,input.length()-2);
     }
 
     // this is part of printTree function
     public String printInorder(Node node) {
         String input ="";
         if (node != null) {
-            input += " ( "+printInorder(node.getLeft());
-            input += " "+ node.getName() + " ";
-            input +=printInorder(node.getRight())+" ) ";
+            input += "("+printInorder(node.getLeft());
+            input += node.getName() ;
+            input +=printInorder(node.getRight())+")";
         }
         input = input.replace("  "," ");
         return input ;
@@ -153,9 +133,6 @@ public class BinaryTree {
         return output ;
     }
 
-    // done
-    // input  = "(A[20,10] | (B[20,10]|C[30,10])) - (D[30,50] | (E[40,30] - F[40,20]))"
-    // output = "(A|(B|C))-(D|(E-F))"
     public String fixInputString (String input){
         input = deleteSpace (input);
         fullNodesMap(input);
