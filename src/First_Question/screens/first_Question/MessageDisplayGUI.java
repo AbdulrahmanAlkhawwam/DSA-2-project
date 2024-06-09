@@ -1,9 +1,10 @@
 package First_Question.screens.first_Question;
 
 import First_Question.algorithm.Node;
+import First_Question.algorithm.order6.RectangleChar;
 import First_Question.files.readFile;
 import First_Question.files.writeFile;
-import First_Question.algorithm.order6.RectangleChar;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,7 @@ public class MessageDisplayGUI {
    private JPanel buttonPanel,buttonPanel2,t;
 
     public MessageDisplayGUI(String message) {
-        frame = new JFrame("Message Display");
+        frame = new JFrame("Message Display Form4 and 5");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 300);
         frame.setLayout(new BorderLayout(10, 10));
@@ -44,7 +45,7 @@ public class MessageDisplayGUI {
         buttonPanel.setBackground(new Color(240, 248, 255));
 
         // Create button
-        JButton doneButton = new JButton("الانتقال الى واجهة اخرى");
+        JButton doneButton = new JButton("Move to another interface");
         doneButton.setFont(new Font("Arial", Font.BOLD, 16));
         doneButton.setForeground(Color.WHITE);
         doneButton.setBackground(new Color(0, 102, 204));
@@ -68,12 +69,12 @@ public class MessageDisplayGUI {
                 try {
                     frame.dispose();
                     char [][] flip=re.flipRectangle(re.getRec2D());
-                    writeFile.writeToFile(flip,"C:\\Users\\dell\\Desktop\\First_Question\\files\\order3\\Form^");
-                    JFrame frame1 = new JFrame("Matrix Visualization");
+                    writeFile.writeToFile(flip,"src/First_Question/files/order3/form");
+                    JFrame frame1 = new JFrame("Matrix Visualization Form 6");
                     frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     RectangleDraw Rectangle=new RectangleDraw(flip);
                     frame1.add(Rectangle);
-                    switchButton1 = new JButton("الانتقال إلى واجهة أخرى");
+                    switchButton1 = new JButton("Move to another interface");
                     switchButton1.setPreferredSize(new Dimension(200, 50));
                     t = new JPanel();
                     t.setBackground(new Color(240, 240, 240)); // لون خلفية اللوحة
@@ -85,12 +86,14 @@ public class MessageDisplayGUI {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             frame1.dispose();
-                            Node node = readFile.readDrawing("C:\\Users\\dell\\Desktop\\First_Question\\files\\order3\\Form^");
-                            JFrame frame2 = new JFrame("Binary Tree Visualization");
+                            Node node = readFile.readDrawing("src/First_Question/files/order3/form");
+                            JFrame frame2 = new JFrame("Binary Tree Visualization Form6");
                             TreeVisualization treeVisualization = new TreeVisualization(node);
                             frame2.add(treeVisualization);
+                            frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             frame2.pack();
                             frame2.setVisible(true);
+
 
                         }});
                 } catch (IOException ex) {
