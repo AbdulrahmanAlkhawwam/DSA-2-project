@@ -1,16 +1,16 @@
 package First_Question;
 
 import First_Question.algorithm.*;
-import First_Question.algorithm.order2.order2;
-import First_Question.algorithm.order4_5.order4_5;
 import First_Question.files.readFile;
 import First_Question.files.writeFile;
+import First_Question.screens.first_Question.StringInputFrame;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         try {
+            new StringInputFrame();
             // الطلب الاول
             System.out.println("First order .");
             // الطلب الثاني
@@ -29,7 +29,7 @@ public class Main {
 
             // Import tree (tree => String), chooses the tree from last order: -
             System.out.println("Import order .");
-            String output = order2.PrintTree(bt.getRoot());
+            String output = bt.PrintTree(bt.getRoot());
             System.out.println(output);
 
             // الطلب الثالث
@@ -37,7 +37,7 @@ public class Main {
             // Export tree (drawing => tree), chooses the input which you want from second order in export function [line-12]: -
             System.out.println("Export order .");
             Node node = readFile.readDrawing("src/First_Question/files/order3/import_3");
-            System.out.println(order2.PrintTree(node));
+            System.out.println(bt.PrintTree(node));
 
             // Import tree (tree => drawing)
             System.out.println("Import order .");
@@ -45,8 +45,7 @@ public class Main {
 
             // الطلب الرابع و الخامس معا
             System.out.println("forth and Fifth order .");
-            order4_5 order45 = new order4_5();
-            order45.creatTree(order2.nodesList,bt.getRoot(),"src/First_Question/files/order4/export_4");
+            bt.creatTree(bt.nodesList,bt.getRoot(),"src/First_Question/files/order4/export_4");
 
             // الطلب السادس
 

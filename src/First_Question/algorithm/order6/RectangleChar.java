@@ -1,7 +1,12 @@
 package First_Question.algorithm.order6;
 
+import First_Question.files.writeFile;
+
+import java.io.IOException;
+
 public class RectangleChar {
-    String[] Rec = {
+    static char[][] Rec2D;
+    static String[] Rec = {
             "----------------------------------------------------------------------",
             "|A                  |B                  |C                           |",
             "|                   |                   |                            |",
@@ -58,7 +63,17 @@ public class RectangleChar {
             "|                             |                                      |",
             "---------------------------------------------------------------------- "
     };
-    void convertStingtochar(String []Rec){
+
+
+    public static char[][] getRec2D() {
+        return Rec2D;
+    }
+
+    public static String[] getRec() {
+        return Rec;
+    }
+
+    public static void convertStingtochar(String[] Rec){
         int maxLength = 0;
         for (String row : Rec) {
             if (row.length() > maxLength) {
@@ -67,13 +82,13 @@ public class RectangleChar {
         }
 
 
-        char[][] Rec2D = new char[Rec.length][maxLength];
+        Rec2D = new char[Rec.length][maxLength];
 
 
         for (int i = 0; i < Rec.length; i++) {
             Rec2D[i] = Rec[i].toCharArray();
         }}
-    public static char[][] flipRectangle(char rectangle [][]) {
+    public static char[][] flipRectangle(char rectangle [][]) throws IOException {
         int row=rectangle.length;
         int col=rectangle[0].length;
 //        System.out.println(row);
@@ -101,16 +116,20 @@ public class RectangleChar {
         flipped[flipped.length-1][0]='-';
         flipped[flipped.length-1][flipped[0].length-1]='-';
 
+        writeFile.writeToFile(flipped,"C:\\Users\\dell\\Desktop\\First_Question\\files\\order3\\Form^ ");
+
         return flipped;
     }
-    void printRectangle(char [][]Rec){
-        for (int i = 0; i < Rec.length; i++) {
-            for (int j = 0; j < Rec[0].length; j++) {
-                System.out.print(Rec[i][j]);
-            }
-            System.out.println();
-        }
-    }
+
+
+//    void printRectangle(char [][]Rec){
+//        for (int i = 0; i < Rec.length; i++) {
+//            for (int j = 0; j < Rec[0].length; j++) {
+//                System.out.print(Rec[i][j]);
+//            }
+//            System.out.println();
+//        }
+//    }
 
 }
 
