@@ -5,26 +5,33 @@ import java.util.Collections;
 public class BinaryTree {
 
     // General tree => Binary tree
-    public BinaryTreeNode ConvertGeneralToBinary(GeneralTreeNode root)
+    public BinaryTreeNode ConvertGeneralToBinary(GeneralTreeNode GRoot)
     {
-        if (root == null)
+        // stop condition
+        if (GRoot == null){
             return null;
+        }
 
-        BinaryTreeNode binaryTreeRoot = new BinaryTreeNode(root.getName());
+        // convert root (General tree root) to root (binary tree root)
+        BinaryTreeNode BRoot = new BinaryTreeNode(GRoot.getName());
 
-        if (root.getChildren().size() > 0)
-            binaryTreeRoot.setRight(ConvertGeneralToBinary(root.getChildren().get(root.getChildren().size() - 1)));
+        // when general root have children
+        if (GRoot.getChildren().size() > 0){
+            // recursion call for children to set them in the right node of Binary Root (node)
+            BRoot.setRight(ConvertGeneralToBinary(GRoot.getChildren().get(GRoot.getChildren().size() - 1)));
+        }
 
-        BinaryTreeNode current = binaryTreeRoot.getRight();
+        // shift to next step by go to right node of binary Root (node)
+        BinaryTreeNode current = BRoot.getRight();
 
-        for (int i = root.getChildren().size() - 2; i >= 0; i--) {
-
-            GeneralTreeNode child = root.getChildren().get(i);
+        // put a brother of children in left side
+        for (int i = GRoot.getChildren().size() - 2; i >= 0; i--) {
+            GeneralTreeNode child = GRoot.getChildren().get(i);
             current.setLeft(ConvertGeneralToBinary(child));
             current = current.getLeft();
         }
 
-        return binaryTreeRoot;
+        return BRoot;
     }
 
     // print a binary tree on console
@@ -42,23 +49,28 @@ public class BinaryTree {
     }
 
     // Binary tree => General tree
-    public GeneralTreeNode ConvertBinaryToGeneral(BinaryTreeNode root)
+    public GeneralTreeNode ConvertBinaryToGeneral(BinaryTreeNode BRoot)
     {
-        if (root == null)
+        // stop condition
+        if (BRoot == null)
             return null;
 
-        GeneralTreeNode generalRoot = new GeneralTreeNode(root.getName());
+        // convert root (General tree root) to root (binary tree root)
+        GeneralTreeNode GRoot = new GeneralTreeNode(BRoot.getName());
 
-        BinaryTreeNode current = root.getRight();
+        // get the right node of BRoot to find the children of BRoot node
+        BinaryTreeNode current = BRoot.getRight();
 
+        // get the left nodes of the right node (find the children)
         while (current != null) {
-            generalRoot.getChildren().add(ConvertBinaryToGeneral(current));
+            // recursion call to get the left nodes
+            GRoot.getChildren().add(ConvertBinaryToGeneral(current));
+            // shift to the next step
             current = current.getLeft();
         }
 
-        Collections.reverse(generalRoot.getChildren());
+        Collections.reverse(GRoot.getChildren());
 
-        return generalRoot;
+        return GRoot;
     }
-
 }

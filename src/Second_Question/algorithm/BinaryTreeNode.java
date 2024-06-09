@@ -7,12 +7,12 @@ public class BinaryTreeNode {
     private char name;
     private BinaryTreeNode left,right;
 
-    public BinaryTreeNode(char name)
-    {
+    public BinaryTreeNode(char name) {
         this.name = name;
         left = null;
         right = null;
     }
+
     public BinaryTreeNode (char name , BinaryTreeNode left , BinaryTreeNode right){
         this.name = name ;
         this.left = left ;

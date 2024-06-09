@@ -7,14 +7,16 @@ public class Node {
     private Node left ;
     private int width ;
     private int high ;
+    public boolean isRoot ;
 
     // constructors
-    public Node (char name , Node right , Node left , int width , int high){
+    public Node (char name , Node right , Node left , int width , int high, boolean isRoot){
         this.name = name ;
         this.right = right ;
         this.left = left ;
         this.width = width ;
         this.high = high ;
+        this.isRoot = isRoot ;
     }
     public Node (char name , Node right , Node left ){
         this.name = name ;
@@ -22,6 +24,12 @@ public class Node {
         this.left = left ;
         this.width = 0 ;
         this.high = 0 ;
+    }
+    public Node (char name , int width , int high, boolean isRoot){
+        this.name = name ;
+        this.width = width ;
+        this.high = high ;
+        this.isRoot = isRoot ;
     }
     public Node (char name , int width , int high){
         this.name = name ;
@@ -36,11 +44,12 @@ public class Node {
         this.left = null ;
     }
     public Node (){
-        this.name = 'G' ;
+        this.name = 'N' ;
         this.width = 0 ;
         this.high = 0 ;
         this.right = null ;
         this.left = null ;
+        this.isRoot = false ;
     }
 
     // Getters and setters
@@ -79,12 +88,10 @@ public class Node {
         this.high = high;
     }
 
-    // print node for files string input
     public String printNode (){
         return this.name +"["+this.width+","+this.high+"]";
     }
 
-    // print node only for debugging
     @Override
     public String toString() {
         return "GeneralTreeNode{" +
@@ -96,6 +103,7 @@ public class Node {
                 '}';
     }
 
+    // هبد طارق و الله اعلم
     void addChild(Node child, boolean isLeft) {
         if (isLeft) {
             this.left = child;
@@ -103,11 +111,9 @@ public class Node {
             this.right = child;
         }
     }
-
+    private int index = 0;
     public Node buildTree(Node[] characters) {
-        int index = 0;
         if (index >= characters.length) {
-
             return null;
         }
         Node current = characters[index++];
@@ -119,7 +125,6 @@ public class Node {
         }
         return node;
     }
-
     // Helper method to print the tree in pre-order to verify correctness
     public void printTree(Node node) {
         if (node != null) {
