@@ -2,6 +2,7 @@ package First_Question.screens.first_Question;
 
 import First_Question.algorithm.BinaryTree;
 import First_Question.algorithm.Node;
+import First_Question.algorithm.form4_5;
 
 import javax.swing.*;
 import java.awt.*;
@@ -107,7 +108,7 @@ public class NodesInput {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
-            String s= BinaryTree.answer((ArrayList<Node>) nodeList);
+            String s= form4_5.answer((ArrayList<Node>) nodeList);
             new MessageDisplayGUI(s);
 
 

@@ -1,5 +1,10 @@
 package Second_Question.screens;
-import Second_Question.algorithm.*;
+
+import Second_Question.algorithm.BinaryTree;
+import Second_Question.algorithm.BinaryTreeNode;
+import Second_Question.algorithm.GeneralTree;
+import Second_Question.algorithm.GeneralTreeNode;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,9 +13,9 @@ import java.awt.event.ActionListener;
 
 
 public class FrameGUI extends JFrame {
-     GeneralTreeNode root;
-     GeneralTree GT=new GeneralTree();
-     BinaryTree bT=new BinaryTree();
+    GeneralTreeNode root;
+    GeneralTree GT=new GeneralTree();
+    BinaryTree bT=new BinaryTree();
     private JButton convertButton;
     private JButton convertBackButton;
     private TreeGUI treePanel;

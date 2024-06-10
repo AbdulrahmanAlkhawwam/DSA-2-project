@@ -116,7 +116,7 @@ public class RectangleChar {
         flipped[flipped.length-1][0]='-';
         flipped[flipped.length-1][flipped[0].length-1]='-';
 
-        writeFile.writeToFile(flipped,"C:\\Users\\dell\\Desktop\\First_Question\\files\\order3\\Form^ ");
+        writeFile.writeToFile(flipped,"src/First_Question/files/order3/form");
 
         return flipped;
     }

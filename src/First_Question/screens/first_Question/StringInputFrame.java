@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StringInputFrame extends JFrame {
-    BinaryTree BT;
+    static BinaryTree BT;
     private JFrame frame;
     private JTextField inputField;
     private BinaryTree tree;
@@ -106,9 +106,9 @@ public class StringInputFrame extends JFrame {
                             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             RectangleDraw Rectangle=new RectangleDraw(Rec);
                             frame.add(Rectangle);
-                             switchButton1 = new JButton("Move to another interface");
+                            switchButton1 = new JButton("Move to another interface");
                             switchButton1.setPreferredSize(new Dimension(200, 50));
-                             buttonPanel = new JPanel();
+                            buttonPanel = new JPanel();
                             buttonPanel.setBackground(new Color(240, 240, 240)); // لون خلفية اللوحة
                             buttonPanel.add(switchButton1);
                             frame.add(buttonPanel, BorderLayout.SOUTH);

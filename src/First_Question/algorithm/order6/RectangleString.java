@@ -1,4 +1,4 @@
-package First_Question.algorithm.form6;
+package First_Question.algorithm.order6;
 
 public class RectangleString {
     public static String[][] flipRectangle(String rectangle [][]) {

@@ -1,6 +1,5 @@
-A->B,C,D,N
+A->B,C,D
 B->E,F
 C->G
 D->H,I,J
-H->L,M
-J->Z
+J->K

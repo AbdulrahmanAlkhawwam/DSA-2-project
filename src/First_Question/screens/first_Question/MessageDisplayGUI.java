@@ -65,10 +65,12 @@ public class MessageDisplayGUI {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 RectangleChar re=new RectangleChar();
-                re.convertStingtochar(RectangleChar.getRec());
+//                re.convertStingtochar(RectangleChar.getRec());
                 try {
-                    frame.dispose();
-                    char [][] flip=re.flipRectangle(re.getRec2D());
+//                    frame.dispose();
+                    char [][]Rec=StringInputFrame.BT.drawTree(StringInputFrame.BT.getRoot(),"src/First_Question/files/order3/export_3" );
+//                    char [][] flip=re.flipRectangle(re.getRec2D());
+                    char [][] flip=re.flipRectangle(Rec);
                     writeFile.writeToFile(flip,"src/First_Question/files/order3/form");
                     JFrame frame1 = new JFrame("Matrix Visualization Form 6");
                     frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
