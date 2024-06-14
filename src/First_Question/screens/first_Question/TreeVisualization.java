@@ -28,7 +28,7 @@ public class TreeVisualization extends JPanel {
             Graphics2D g2 = (Graphics2D) g;
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            String nodeText = node.getName() + "[" + node.getWidth() + "," + node.getHigh() + "]";
+            String nodeText = node.getName() + "[" + node.getWidth() + "," + node.getHeight() + "]";
             int nodeDiameter = 60;
             int nodeRadius = nodeDiameter / 2;
 

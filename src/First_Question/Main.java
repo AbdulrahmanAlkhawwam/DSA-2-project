@@ -1,16 +1,16 @@
 package First_Question;
 
 import First_Question.algorithm.*;
-import First_Question.files.readFile;
-import First_Question.files.writeFile;
-import First_Question.screens.first_Question.StringInputFrame;
+
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         try {
-            new StringInputFrame();
+            BinaryTree binaryTree = new BinaryTree(new Node ('a',new Node('b',null,null,10,20,false), new Node('c',null , null , 20,30,false), 30, 40, true));
+            System.out.println(binaryTree.getRoot());
+  /*          new StringInputFrame();
             // الطلب الاول
             System.out.println("First order .");
             // الطلب الثاني
@@ -25,6 +25,7 @@ public class Main {
             String input6 = "  ";
             String input7 = " ( ) | ";
             String input8 = "";
+            String input9 = "((c[10,30]|(D[20,10]-E[20,20]))-B[30,40])|(f[40,70])";
             BinaryTree bt = new BinaryTree(input2);
             System.out.println(bt.getRoot());
 
@@ -47,7 +48,7 @@ public class Main {
 
             // الطلب الرابع و الخامس معا
             System.out.println("forth and Fifth order .");
-            form4_5.creatTree(bt.nodesList,bt.getRoot(),"src/First_Question/files/order4/export_4");
+            //form4_5.creatTree(bt.nodesList,bt.getRoot(),"src/First_Question/files/order4/export_4");
 
 
             // الطلب السادس
@@ -111,6 +112,8 @@ public class Main {
             //System.out.println(output);
             //tree.buildTree(output);
             //System.out.println(tree.getRoot());
+
+   */
         }catch (Exception exception){
             System.out.println(exception.getMessage());
         }

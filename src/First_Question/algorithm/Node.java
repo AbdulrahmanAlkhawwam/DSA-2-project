@@ -6,7 +6,7 @@ public class Node {
     private Node right ;
     private Node left ;
     private int width ;
-    private int high ;
+    private int height;
     public boolean isRoot ;
 
     // constructors
@@ -15,7 +15,7 @@ public class Node {
         this.right = right ;
         this.left = left ;
         this.width = width ;
-        this.high = high ;
+        this.height = high ;
         this.isRoot = isRoot ;
     }
     public Node (char name , Node right , Node left ){
@@ -23,30 +23,30 @@ public class Node {
         this.right = right ;
         this.left = left ;
         this.width = 0 ;
-        this.high = 0 ;
+        this.height = 0 ;
     }
     public Node (char name , int width , int high, boolean isRoot){
         this.name = name ;
         this.width = width ;
-        this.high = high ;
+        this.height = high ;
         this.isRoot = isRoot ;
     }
     public Node (char name , int width , int high){
         this.name = name ;
         this.width = width ;
-        this.high = high ;
+        this.height = high ;
     }
     public Node (char name){
         this.name = name ;
         this.width = 0 ;
-        this.high = 0 ;
+        this.height = 0 ;
         this.right = null ;
         this.left = null ;
     }
     public Node (){
         this.name = 'N' ;
         this.width = 0 ;
-        this.high = 0 ;
+        this.height = 0 ;
         this.right = null ;
         this.left = null ;
         this.isRoot = false ;
@@ -81,15 +81,15 @@ public class Node {
         this.width = width;
     }
 
-    public int getHigh() {
-        return high;
+    public int getHeight() {
+        return height;
     }
-    public void setHigh(int high) {
-        this.high = high;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public String printNode (){
-        return this.name +"["+this.width+","+this.high+"]";
+        return this.name +"["+this.width+","+this.height +"]";
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Node {
                 ", right=" + right +
                 ", left=" + left +
                 ", width=" + width +
-                ", high=" + high +
+                ", high=" + height +
                 '}';
     }
 
@@ -117,7 +117,7 @@ public class Node {
             return null;
         }
         Node current = characters[index++];
-        Node node = new Node(current.name,current.getWidth(),current.getHigh());
+        Node node = new Node(current.name,current.getWidth(),current.getHeight());
         // If the current node is '-' or '|', it is an internal node
         if (current.getName()=='-' || current.getName()=='|') {
             node.left = buildTree(characters);  // build left subtree

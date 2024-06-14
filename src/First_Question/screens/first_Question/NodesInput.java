@@ -1,8 +1,6 @@
 package First_Question.screens.first_Question;
 
-import First_Question.algorithm.BinaryTree;
 import First_Question.algorithm.Node;
-import First_Question.algorithm.form4_5;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +61,7 @@ public class NodesInput {
         finishButton.setBackground(new Color(60, 179, 113));
         finishButton.setForeground(Color.WHITE);
         finishButton.setFocusPainted(false);
-        finishButton.addActionListener(new FinishAction());
+        // finishButton.addActionListener(new FinishAction());
         inputPanel.add(finishButton);
 
         frame.add(inputPanel, BorderLayout.NORTH);
@@ -104,7 +102,7 @@ public class NodesInput {
         }
     }
 
-    private class FinishAction implements ActionListener {
+   /* private class FinishAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.dispose();
@@ -117,4 +115,7 @@ public class NodesInput {
 
             // Perform any additional actions needed when finishing
         }
-    }}
+    }
+    }
+    */
+}

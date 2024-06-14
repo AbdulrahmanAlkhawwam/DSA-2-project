@@ -1,47 +1,46 @@
 package First_Question.algorithm;
-
-import First_Question.files.writeFile;
-
+import First_Question.files.*;
 import java.io.IOException;
 import java.util.*;
 
 public class BinaryTree {
+    // Vars & Attributes
+    private ArrayList<Node> nodes;
+    private Node root;
 
-    //////////////////////// fisrt order ////////////////////////
-
-    public Map<Character, Node> nodes = new HashMap<>();
-    public  ArrayList<Node> nodesList = new ArrayList<>();
-    private String tree = null ;
-    private Node root ;
-
-    public BinaryTree (Node root){
-        this.root = root ;
-        String s = this.PrintTree(this.root);
-        setTree(s);
-        // here we make treeString is not null value
+    // constructors
+    public BinaryTree(Node root) {
+        this.root = root;
+        this.nodes = new ArrayList<>();
     }
-    public BinaryTree (String tree){
-        this.tree = tree;
-        Node n = this.buildTree(this.tree);
-        setRoot(n);
-        // here we make node is not null value
+    public BinaryTree (String input){
+        System.out.println(input);
     }
-    public BinaryTree (){this.root = new Node() ;}
 
+    public BinaryTree() {
+        this.root = new Node();
+        this.nodes = new ArrayList<>();
+    }
+
+    // Getters & Setters
     public Node getRoot() {
         return root;
     }
+
     public void setRoot(Node root) {
         this.root = root;
     }
-    public String getTree() {
-        return tree;
-    }
-    public void setTree (String tree){
-        this.tree = tree ;
+
+    public ArrayList<Node> getNodes() {
+        return nodes;
     }
 
-    //////////////////////// second order ////////////////////////
+    public void setNodes(ArrayList<Node> nodes) {
+        this.nodes = nodes;
+    }
+
+}
+/*    //////////////////////// second order ////////////////////////
 
     public Node buildTree (String input){
         Node output = null ;
@@ -88,7 +87,7 @@ public class BinaryTree {
                 leftNode = nodes.get(c);
                 stack.push(leftNode);
             } else {
-                nodes.put(c,new Node(c));
+                nodes.add(new Node(c));
                 stack.push(nodes.get(c));
             }
         }
@@ -175,8 +174,7 @@ public class BinaryTree {
                 // width value
                 String nodeHigh = value.substring(comma, value.length() - 1);
                 // create a node and add it to nodes' map
-                nodes.put(name, new Node(name, Integer.parseInt(nodeWidth), Integer.parseInt(nodeHigh)));
-                nodesList.add(new Node(name, Integer.parseInt(nodeWidth), Integer.parseInt(nodeHigh)));
+                nodes.add(name, new Node(name, Integer.parseInt(nodeWidth), Integer.parseInt(nodeHigh)));
             }
         }
     }
@@ -184,7 +182,7 @@ public class BinaryTree {
         return input.replace(" ","");
     }
     public String clearString (String input){
-        for (int z : nodes.keySet()){
+        for (Node z : nodes){
             input = input.substring(0,input.indexOf('['))+input.substring(input.indexOf(']')+1);
         }
         return input ;
@@ -283,3 +281,4 @@ public class BinaryTree {
     }
 
 }
+*/

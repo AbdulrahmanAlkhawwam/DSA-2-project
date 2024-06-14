@@ -1,3 +1,4 @@
+/*
 package First_Question.algorithm;
 
 import First_Question.files.writeFile;
@@ -39,3 +40,4 @@ public class form4_5 {
     }
 
 }
+*/
